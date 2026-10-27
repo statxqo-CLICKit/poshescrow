@@ -1,0 +1,5 @@
+name="posh-treasury"
+main="worker.js"
+compatibility_date="2024-09-01"
+workers_dev=true
+account_id="1531fc8f5ef3475c2d4059445ab6ce65"

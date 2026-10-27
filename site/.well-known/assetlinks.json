@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "dev.pages.poshescrow.twa",
+        "sha256_cert_fingerprints": ["BC:B5:AF:08:A4:74:70:E0:8F:9A:9F:13:52:08:68:FE:CA:5F:E5:A6:53:74:A6:03:05:06:29:82:E6:42:27:11"]
+      }
+    }]

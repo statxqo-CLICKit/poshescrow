@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>POSH Treasury Transfer</title>
+<style>body{font-family:system-ui,sans-serif;max-width:560px;margin:40px auto;padding:0 20px;background:#F5F5F3;color:#111}h1{font-weight:300}button{font-family:monospace;text-transform:uppercase;padding:14px 22px;border:0;border-radius:999px;background:#0B0F1A;color:#fff;font-size:15px;cursor:pointer;width:100%;margin:8px 0}button:disabled{background:#999}.row{background:#fff;border-radius:16px;padding:16px;margin:12px 0;font-size:14px;word-break:break-all}.ok{color:#0a7d32}.bad{color:#b00020}code{font-size:12px}</style></head><body>
+<h1>POSH treasury &rarr; 1,000,000 FMNY</h1>
+<div class="row">Network: <b>Base Sepolia (84532)</b> &middot; test tokens, no real value<br>From (treasury): <code>0xaDF3F583C3E093A133EEcfF977573C3e4AA9851d</code><br>To (deployer): <code>0xEE70ed9B63cFcfB633ae4D2358C86020a4475d9F</code><br>Token: <code>0x6ea28bc7e57b4032fa673bacf6d794d8c68dca75</code></div>
+<button id="go" style="background:#0a7d32;font-size:17px">&#9654; One click: connect, switch &amp; send</button><button id="c">1. Connect MetaMask</button>
+<button id="n" disabled>2. Switch to Base Sepolia</button>
+<button id="w" disabled>3. Add FMNY to MetaMask (optional)</button>
+<button id="s" disabled>4. Send 1,000,000 FMNY</button>
+<div class="row" id="st">Open this page in Chrome with the MetaMask extension.</div>
+<script>
+const T="0xadf3f583c3e093a133eecff977573c3e4aa9851d",TOK="0x6ea28bc7e57b4032fa673bacf6d794d8c68dca75",DATA="0xa9059cbb000000000000000000000000ee70ed9b63cfcfb633ae4d2358c86020a4475d9f00000000000000000000000000000000000000000000d3c21bcecceda1000000";
+const st=m=>document.getElementById("st").innerHTML=m;const E=window.ethereum;let acct=null;
+async function bal(){const r=await E.request({method:"eth_call",params:[{to:TOK,data:"0x70a08231"+T.slice(2).padStart(64,"0")},"latest"]});return (BigInt(r)/10n**18n).toLocaleString()}
+async function chk(){const a=await E.request({method:"eth_accounts"});acct=(a[0]||"").toLowerCase();const ch=await E.request({method:"eth_chainId"});
+ const isT=acct===T,isN=ch==="0x14a34";
+ document.getElementById("n").disabled=!isT;document.getElementById("w").disabled=!(isT&&isN);document.getElementById("s").disabled=!(isT&&isN);
+ let m=acct?("Connected: <code>"+acct+"</code><br>"+(isT?"<span class=ok>&#10003; This is the treasury wallet.</span>":"<span class=bad>&#10007; Not the treasury. In MetaMask, switch the account to 0xaDF3&hellip;851d, then press Connect again.</span>")):"Not connected.";
+ m+="<br>Network: "+(isN?"<span class=ok>&#10003; Base Sepolia</span>":"<span class=bad>&#10007; wrong network ("+parseInt(ch,16)+")</span>");
+ if(isT&&isN){try{m+="<br>Treasury FMNY: <b>"+await bal()+"</b>"}catch(e){}}st(m)}
+if(!E){st("<span class=bad>MetaMask not found. Open this link in desktop Chrome with the MetaMask extension, or inside the MetaMask app browser.</span>")}else{
+ E.on&&E.on("accountsChanged",chk);E.on&&E.on("chainChanged",chk);
+ document.getElementById("c").onclick=async()=>{try{await E.request({method:"wallet_requestPermissions",params:[{eth_accounts:{}}]})}catch(e){} await E.request({method:"eth_requestAccounts"});chk()};
+ document.getElementById("n").onclick=async()=>{try{await E.request({method:"wallet_switchEthereumChain",params:[{chainId:"0x14a34"}]})}catch(e){if(e.code===4902||(e.data&&e.data.originalError&&e.data.originalError.code===4902))await E.request({method:"wallet_addEthereumChain",params:[{chainId:"0x14a34",chainName:"Base Sepolia",rpcUrls:["https://sepolia.base.org"],nativeCurrency:{name:"ETH",symbol:"ETH",decimals:18},blockExplorerUrls:["https://sepolia.basescan.org"]}]});else st("<span class=bad>"+e.message+"</span>")}chk()};
+ document.getElementById("w").onclick=async()=>{try{await E.request({method:"wallet_watchAsset",params:{type:"ERC20",options:{address:TOK,symbol:"FMNY",decimals:18}}})}catch(e){st("<span class=bad>"+e.message+"</span>")}};
+ document.getElementById("s").onclick=async()=>{await chk();if(acct!==T)return;try{const h=await E.request({method:"eth_sendTransaction",params:[{from:acct,to:TOK,data:DATA,gas:"0x11170",maxPriorityFeePerGas:"0xf4240",maxFeePerGas:"0x1312d00"}]});
+  st("<span class=ok>&#10003; Sent!</span><br>Tx hash: <code>"+h+"</code><br><a target=_blank href='https://sepolia.basescan.org/tx/"+h+"'>View on Basescan</a> &mdash; copy the hash and send it to Hark.")}catch(e){st("<span class=bad>"+e.message+"</span>")}};
+ document.getElementById("go").onclick=async()=>{try{await E.request({method:"eth_requestAccounts"});await chk();if(acct!==T){st("<span class=bad>&#10007; MetaMask connected <code>"+acct+"</code>, not the treasury. Click the fox, switch account to 0xaDF3&hellip;851d, then press the green button again.</span>");return}
+ try{await E.request({method:"wallet_switchEthereumChain",params:[{chainId:"0x14a34"}]})}catch(e){await E.request({method:"wallet_addEthereumChain",params:[{chainId:"0x14a34",chainName:"Base Sepolia",rpcUrls:["https://sepolia.base.org"],nativeCurrency:{name:"ETH",symbol:"ETH",decimals:18},blockExplorerUrls:["https://sepolia.basescan.org"]}]})}
+ await chk();document.getElementById("s").click()}catch(e){st("<span class=bad>"+e.message+"</span>")}};
+ chk()}
+</script></body></html>

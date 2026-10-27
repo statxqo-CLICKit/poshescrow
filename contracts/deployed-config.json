@@ -1,0 +1,21 @@
+{
+  "chainId": 84532,
+  "escrowAddress": "0x5600c38d7f00dd06719ecd7a4d5b5cd9f40f340d",
+  "vaultAddress": "0xeac142c2836ea70cdfb8237b20d7e58291a869b5",
+  "passportAddress": "0x80412d3d359892fd383419848ea8dc24d76d60db",
+  "tokenAddress": "0x6ea28bc7e57b4032fa673bacf6d794d8c68dca75",
+  "rewardsAddress": "0x3784091fc0063a567f11c90dfcbe4f1e1f6cff67",
+  "saleAddress": "0xbf5a6455204ee6b69e263bb55c93b64fee4f48ae",
+  "profilesAddress": "0x94991a934164013dab8e3fe1b92676267b86a114",
+  "usdcAddress": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+  "treasuryAddress": "0xaDF3F583C3E093A133EEcfF977573C3e4AA9851d",
+  "defaultArbiter": "0x108595a5D7CE3e46027ee2DaD62f4780F7fE34aF",
+  "distributorAddress": "0xc88bd7742d0edac28488a7952d4169e3e719ef57",
+  "teamVestingAddress": "0x62303500ab0610a9798b094532c7242de5ba8776",
+  "teamVesting2Address": "0x3587c6b104f417c51c3d989c1b4dd9aa2efc31c1",
+  "advisorVestingAddress": "0x84b2e5c1b596ddef146fefb2ebf5de907186b4f3",
+  "timelockAddress": "0xdd172a2f322b20281cbf6d50869e5ae6292280d8",
+  "ownerMultisig": "0x1e4460d71eE59AbC307967D13C95d1874F2adb52",
+  "guardianAddress": "0x1e4460d71eE59AbC307967D13C95d1874F2adb52",
+  "ethUsdFeed": "0x4aDC67696bA383F43DD60A9e78F2C97Fbbfc7cb1"
+}

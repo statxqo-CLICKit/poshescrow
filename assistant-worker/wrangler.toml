@@ -1,0 +1,15 @@
+# POSH Assistant – Cloudflare Worker (Workers Free plan only, no paid features)
+name = "posh-assistant"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+account_id = "1531fc8f5ef3475c2d4059445ab6ce65"
+workers_dev = true
+
+# Workers AI binding (free daily allocation: 10,000 Neurons/day on Workers Free)
+[ai]
+binding = "AI"
+
+[vars]
+MODEL = "@cf/meta/llama-3.1-8b-instruct-fp8"
+FALLBACK_MODEL = "@cf/meta/llama-3.2-3b-instruct"
+RATE_LIMIT_PER_MIN = "8"

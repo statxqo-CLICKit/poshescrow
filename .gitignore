@@ -1,0 +1,14 @@
+# secrets
+.env
+*.env
+*.keystore
+*.jks
+signing-key-info.txt
+# foundry
+contracts/out/
+contracts/cache/
+contracts/lib/
+contracts/broadcast/*/dry-run/
+# node / wrangler
+node_modules/
+.wrangler/
