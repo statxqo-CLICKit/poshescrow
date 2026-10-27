@@ -1,4 +1,6 @@
-# POSH Escrow
+<p align="center"><img src="assets/posh-logo.png" width="160" alt="POSH Escrow logo"></p>
+
+<h1 align="center">POSH Escrow</h1>
 
 **Escrow Platform on Base** with the FMoney Protocol (**FMNY**) reward token.
 A Racer X project by Team C.L.I.C.K.it. Co-founders: Stan Redick and Andrea Holmes.
