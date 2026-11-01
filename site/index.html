@@ -468,10 +468,116 @@
       .x-dis button:hover,.x-check button:hover{color:var(--x-ink)}
       @media(max-width:767px),(pointer:coarse){.x-dis button,.x-sheet .x-dis button,.x-check button{display:inline-block;min-width:var(--tap);min-height:var(--tap);line-height:var(--tap);vertical-align:middle}}
       .x-xport .x-row{margin-top:16px}
+      /* ===== Logos ===== */
+      .x-logo{flex:none;display:block;width:30px;height:30px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(30,34,53,.14)}
+      .x-foot .x-logo,.x-fx .x-logo,.x-pa-head .x-logo{box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+      .x-foot .x-mark .x-logo{width:40px;height:40px}
+      .x-pa-head .x-logo{width:26px;height:26px}
+      .x-fmny{display:inline-block;width:.9em;height:.9em;margin-right:.3em;vertical-align:-.1em;border-radius:50%}
+      .x-eye .x-fmny{width:16px;height:16px;margin-right:8px;vertical-align:-3px}
+      /* ===== Sign-up: futuristic monochrome (navy glass, lattice, silver rail) ===== */
+      @property --x-ang{syntax:"<angle>";initial-value:0deg;inherits:false}
+      dialog.x-modal.x-split{background:#0B0F1A;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+      dialog.x-split::after{content:"";position:absolute;inset:0;z-index:6;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from var(--x-ang),rgba(255,255,255,.1),rgba(255,255,255,.1) 58%,rgba(236,239,245,.9) 74%,rgba(255,255,255,.1) 90%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);animation:xang 9s linear infinite}
+      dialog.x-split::before{content:"";position:absolute;left:0;right:0;top:-180px;height:180px;z-index:5;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px),linear-gradient(180deg,transparent,rgba(220,226,240,.05) 50%,transparent);animation:xscan 9s linear infinite}
+      @keyframes xang{to{--x-ang:360deg}}
+      @keyframes xscan{to{transform:translateY(1000px)}}
+      .x-glass{background-color:#0B0F1A;background-image:radial-gradient(rgba(255,255,255,.085) 1px,transparent 1.5px),linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,0) 45%);background-size:22px 22px,100% 100%;background-position:0 0,0 0;animation:xgrid 60s linear infinite}
+      @keyframes xgrid{to{background-position:220px 220px,0 0}}
+      .x-fxmol{position:absolute;right:8px;top:72px;width:240px;height:auto;fill:none;stroke:#fff;stroke-width:1;opacity:.07;pointer-events:none}
+      .x-fxmol *{vector-effect:non-scaling-stroke}
+      .x-fx>*:not(.x-fxmol){position:relative}
+      .x-split .x-wm{display:inline-flex;align-items:center;gap:10px}.x-split .x-wm .x-logo{width:28px;height:28px}
+      /* join: type side becomes the navy glass lattice */
+      .x-split__type{background-color:#0E1322;background-image:radial-gradient(circle at 28% 18%,rgba(255,255,255,.1),transparent 55%),radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.5px);background-size:100% 100%,22px 22px;color:#F2F2EF;--x-tick:rgba(255,255,255,.3)}
+      .x-split__type .x-fxmol{top:auto;bottom:-40px;right:-40px;width:min(520px,90%);opacity:.12}
+      .x-split__type .x-logo{width:88px;height:88px;position:relative}
+      .x-split__type>div{position:relative}
+      .x-split__type b{display:block;background:linear-gradient(180deg,#fff,#9EA3AD);-webkit-background-clip:text;background-clip:text;color:transparent}
+      .x-split__type span{display:block;margin-top:16px;color:#A6A6A2}
+      .x-pmodal .x-split__img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,15,26,0) 55%,rgba(11,15,26,.9))}
+      /* header above the form */
+      .x-fxh{margin:0 0 26px}
+      .x-fxh__l{display:inline-flex;align-items:center;gap:10px;margin:0 0 14px!important;font:400 12px/1.5 var(--x-mono);letter-spacing:.16em;text-transform:uppercase;color:#C9CCD2}
+      .x-fxh__l::before{content:"";width:18px;height:1px;background:currentColor}
+      .x-fxh__l::after{content:"";width:7px;height:13px;background:#E8EAEE;animation:xcaret 1.05s steps(1) infinite}
+      @keyframes xcaret{50%{opacity:0}}
+      .x-join .x-fxh h3,.x-foot .x-join .x-fxh h3{margin:0 0 10px;font:300 clamp(26px,3vw,34px)/1.15 var(--x-sans);letter-spacing:-.01em;text-transform:none;color:#F2F2EF}
+      .x-fxh p:last-child{margin:0;font-size:14px;color:#A6A6A2}
+      /* labels, underline inputs, silver focus line */
+      .x-fx label.x-f{color:#B9BDC6}
+      .x-fx label.x-f:has(+ .x-in:focus),.x-fx label.x-f:has(+ .x-uline:focus-within){color:#F2F2EF}
+      .x-fx label.x-f:has(+ .x-in:focus)::after,.x-fx label.x-f:has(+ .x-uline:focus-within)::after{content:"";display:inline-block;width:6px;height:11px;margin-left:6px;vertical-align:-1px;background:currentColor;animation:xcaret 1.05s steps(1) infinite}
+      .x-fx .x-in:not(select){border-bottom-color:rgba(255,255,255,.22);background:linear-gradient(90deg,transparent,#F4F5F7 30%,#F4F5F7 70%,transparent) 50% 100%/0 1px no-repeat;transition:background-size .45s var(--ease-out),box-shadow .3s}
+      .x-fx .x-in:not(select):focus{border-bottom-color:rgba(255,255,255,.22);background-size:100% 1px;box-shadow:0 8px 14px -12px rgba(230,233,240,.7)}
+      .x-fx .x-in[aria-invalid=true]{border-bottom-color:var(--x-red)}
+      .x-fx .x-uline{position:relative;border-bottom-color:rgba(255,255,255,.22)}
+      .x-fx .x-uline .x-in{background:none!important;box-shadow:none!important}
+      .x-fx .x-uline::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,#F4F5F7 25%,#F4F5F7 75%,transparent);box-shadow:0 0 8px rgba(236,239,245,.6);transform:scaleX(0);transition:transform .45s var(--ease-out)}
+      .x-fx .x-uline:focus-within{border-bottom-color:rgba(255,255,255,.22)}.x-fx .x-uline:focus-within::after{transform:none}
+      .x-fx .x-uline:has([aria-invalid=true]){border-bottom-color:var(--x-red)}
+      .x-fx select.x-in{border-color:rgba(255,255,255,.22)}.x-fx select.x-in:focus{border-color:#F2F2EF}
+      /* capsule button with a soft sweep */
+      .x-fx .x-btn--gold{min-height:44px;padding:0 22px;background-color:#C9CDD4;background-image:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.85) 50%,transparent 60%),linear-gradient(180deg,#ECEEF2,#AEB3BC);background-size:250% 100%,100% 100%;background-repeat:no-repeat;background-position:150% 0,0 0;color:#0B0F1A;box-shadow:0 0 0 1px rgba(255,255,255,.35),0 10px 26px -14px rgba(220,225,235,.6);animation:xsweep 4s var(--ease-out) infinite}
+      .x-fx .x-btn--gold:hover:not(:disabled){background-color:#D4D8DE;background-image:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.85) 50%,transparent 60%),linear-gradient(180deg,#F6F7F9,#BCC1C9)}
+      @keyframes xsweep{50%,100%{background-position:-50% 0,0 0}}
+      /* phase steps: glowing silver progress rail */
+      .x-fx .x-phase{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin:8px 0 32px;padding:24px 0 0}
+      .x-fx .x-phase::before,.x-fx .x-phase::after{content:"";position:absolute;left:6px;top:5px;height:2px;border-radius:2px}
+      .x-fx .x-phase::before{right:calc(25% - 6px);background:rgba(255,255,255,.12)}
+      .x-fx .x-phase::after{width:var(--x-fill,0%);background:linear-gradient(90deg,#7E838D,#fff);box-shadow:0 0 10px rgba(236,239,245,.75),0 0 2px #fff;transition:width .7s var(--ease-out)}
+      .x-fx .x-phase:has(li:nth-child(2).on){--x-fill:25%}.x-fx .x-phase:has(li:nth-child(3).on){--x-fill:50%}.x-fx .x-phase:has(li:nth-child(4).on){--x-fill:75%}
+      .x-fx .x-phase li{padding:0;border:0;color:#9DA1A9;transition:color .3s}
+      .x-fx .x-phase li::before{content:"";position:absolute;left:0;top:-24px;width:12px;height:12px;border-radius:50%;background:#0B0F1A;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3);transition:background-color .3s,box-shadow .3s}
+      .x-fx .x-phase li.done{color:#C9CCD2}.x-fx .x-phase li.done::before{background:#B9BDC6;box-shadow:0 0 6px rgba(236,239,245,.5)}
+      .x-fx .x-phase li.on{color:#fff;border:0}.x-fx .x-phase li.on::before{background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.12),0 0 14px rgba(255,255,255,.85);animation:xglow 2.4s ease-in-out infinite}
+      @keyframes xglow{50%{box-shadow:0 0 0 7px rgba(255,255,255,.06),0 0 20px rgba(255,255,255,.95)}}
+      /* success: you're on the list */
+      .x-done{display:flex;align-items:center;gap:16px;padding:16px 0;border-block:1px solid rgba(255,255,255,.14)}
+      .x-done svg{flex:none;width:48px;height:48px;fill:none;stroke:#F2F2EF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 6px rgba(236,239,245,.5))}
+      .x-done circle{stroke-dasharray:151;animation:xdash .7s var(--ease-out) both}
+      .x-done path{stroke-dasharray:36;animation:xdash .45s .55s var(--ease-out) both}
+      @keyframes xdash{from{stroke-dashoffset:151}}
+      .x-done p{margin:0!important}.x-done__t{font:400 12px/1.5 var(--x-mono);letter-spacing:.12em;text-transform:uppercase;color:#F2F2EF}.x-done__s{font-size:14px;color:#A6A6A2}
+      .x-join.is-done .x-uline,.x-join.is-done .x-uline+.x-err{display:none}
+      .x-foot form.x-glass{padding:clamp(22px,4vw,32px);border-radius:24px;background-color:#0E1322;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+      @media(max-width:767px){
+        dialog.x-split::before,dialog.x-split::after{display:none}
+        dialog.x-modal.x-split{box-shadow:inset 0 1px 0 rgba(255,255,255,.22)}
+        .x-split__type{flex-direction:row;align-items:center;justify-content:flex-start;gap:16px}.x-split__type .x-logo{width:48px;height:48px}.x-split__type span{display:none}
+        .x-pmodal .x-split__img::after{background:linear-gradient(180deg,rgba(11,15,26,0) 40%,#0B0F1A)}
+        .x-fxmol{width:150px;right:4px}
+      }
+      @media(prefers-reduced-motion:reduce){
+        dialog.x-split::before{display:none}
+        dialog.x-split::after,.x-glass,.x-fxh__l::after,.x-fx label.x-f::after,.x-fx .x-phase li::before,.x-done circle,.x-done path{animation:none!important}
+        .x-fx .x-btn--gold{animation:none!important}
+        .x-fx .x-phase::after,.x-fx .x-in,.x-fx .x-uline::after{transition:none!important}
+      }
+      /* ===== Built on & works with ===== */
+      .x-wmks{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:0;padding:0;list-style:none}
+      .x-wmks a{display:flex;flex-direction:column;justify-content:space-between;gap:18px;min-height:104px;padding:18px;border:1px solid var(--x-line);border-radius:18px;background:#fff;color:var(--x-ink);text-decoration:none;transition:border-color .2s,transform .3s var(--ease-out)}
+      .x-wmks a:hover{border-color:var(--x-ink);transform:translateY(-2px)}
+      .x-wmks small{font:400 12px/1.4 var(--x-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--x-mute)}
+      .x-wk{display:inline-flex;align-items:center;gap:8px;font:600 20px/1 var(--x-sans);letter-spacing:-.02em;overflow-wrap:normal}
+      .x-wk i{flex:none;display:block;width:18px;height:18px}
+      .x-wk--base i{border-radius:4px;background:currentColor}
+      .x-wk--uni{font-style:italic;letter-spacing:-.03em}
+      .x-wk--mm{font-size:16px;letter-spacing:.14em;text-transform:uppercase}
+      .x-wk--cb{font-size:18px}.x-wk--cb i{border-radius:50%;border:4px solid currentColor;box-sizing:border-box}.x-wk--cb em{font-style:normal;font-weight:400}
+      .x-wk--mp i{border-radius:50%;box-shadow:inset -5px -2px 0 0 currentColor}
+      .x-wk--bs{font:400 18px/1 var(--x-mono);letter-spacing:-.01em}.x-wk--bs i{border-radius:50%;border:1.5px solid currentColor;box-sizing:border-box;width:14px;height:14px}
+      .x-wk--sf{font:500 18px/1 var(--x-mono);letter-spacing:0}.x-wk--sf b{font-weight:400;color:var(--x-mute)}
+      .x-wk--cf{font-size:15px;letter-spacing:.16em;text-transform:uppercase}
+      .x-find{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px;margin-top:20px}
+      @media(max-width:767px),(pointer:coarse){.x-card p a:not(.x-btn),td.x-mono a{display:inline-flex;align-items:center;min-height:var(--tap);min-width:var(--tap)}}
+      .x-find a{display:inline-flex;align-items:center;justify-content:center;min-width:var(--tap);min-height:var(--tap);color:var(--x-ink);text-underline-offset:4px}
+      @media(max-width:767px){.x-wmks{grid-template-columns:repeat(2,minmax(0,1fr))}.x-wk{font-size:17px}.x-wk--mm,.x-wk--cf{font-size:13px}.x-wk--cb,.x-wk--bs,.x-wk--sf{font-size:15px}}
+      @media(prefers-reduced-motion:reduce){.x-wmks a{transition:none}}
     </style>
     <link rel="manifest" href="/manifest.webmanifest">
     <meta name="theme-color" content="#0B0F1A">
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
     <meta name="mobile-web-app-capable" content="yes">
     <script>if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));}</script>
@@ -481,7 +587,7 @@
     <div class="page" id="top">
       <div class="x-top">
         <div class="x-bar">
-          <div class="x-mark"><i aria-hidden="true"></i><span>POSH<span class="x-sub">Escrow Platform</span></span></div>
+          <div class="x-mark"><img class="x-logo" src="posh-logo-400.png" alt="" width="30" height="30" /><span>POSH<span class="x-sub">Escrow Platform</span></span></div>
           <nav class="x-tabs" role="tablist" aria-label="Sections">
             <button class="x-tab" role="tab" data-tab="deals" aria-selected="true">Deals</button>
             <button class="x-tab" role="tab" data-tab="handoff" aria-selected="false">Handoff<b>New</b></button>
@@ -720,12 +826,12 @@
         <section id="tab-presale" role="tabpanel" hidden>
           <figure class="x-imgp x-tk x-imgx x-imgx--dark">
             <img src="token-atom.jpg" alt="A glass coin stack etched with a dollar sign, orbited by chrome atoms" />
-            <figcaption><p class="x-eye">FMNY · Pre-sale*</p><h2>Rewards bonded to every deal.</h2><p>Both sides of a completed deal earn FMNY, from a limited pool.</p></figcaption>
+            <figcaption><p class="x-eye"><img class="x-fmny" src="token/fmny-logo.svg" alt="" width="16" height="16" />FMNY · Pre-sale*</p><h2>Rewards bonded to every deal.</h2><p>Both sides of a completed deal earn FMNY, from a limited pool.</p></figcaption>
           </figure>
           <div class="x-panel x-tk" style="margin-top:var(--x-gap)">
           <div class="x-card x-neon">
             <p class="x-eye"><svg class="x-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18M6 16l4-5 3 3 6-7"/><circle cx="6" cy="16" r="1.4"/><circle cx="10" cy="11" r="1.4"/><circle cx="13" cy="14" r="1.4"/><circle cx="19" cy="7" r="1.4"/></svg>06 — Pre-sale</p>
-            <h2>FMoney Protocol Pre-sale<a class="x-ast" href="#disc" aria-label="Read the important disclosures">*</a></h2>
+            <h2><img class="x-fmny" src="token/fmny-logo.svg" alt="" width="36" height="36" />FMoney Protocol Pre-sale<a class="x-ast" href="#disc" aria-label="Read the important disclosures">*</a></h2>
             <p>FMNY: the reward token for using Posh Escrow. Both sides of an undisputed completed deal can earn FMNY as a rebate on part of the fee paid, within daily, lifetime and weekly caps, from a limited pool.</p>
             <p class="x-lbl">Pre-sale clock · 30 days</p>
             <div class="x-clock"><div><b id="cD">--</b><span>Days</span></div><div><b id="cH">--</b><span>Hours</span></div><div><b id="cM">--</b><span>Min</span></div><div><b id="cS">--</b><span>Sec</span></div></div>
@@ -782,7 +888,7 @@
         <section id="tab-rewards" role="tabpanel" class="x-panel x-tk" hidden>
           <div class="x-head">
             <p class="x-eye"><svg class="x-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5.5"/><ellipse cx="12" cy="12" rx="10.5" ry="3.8" transform="rotate(-20 12 12)"/><path d="M13.5 10.2c-.3-.6-.8-.9-1.5-.9-.8 0-1.4.4-1.4 1 0 1.4 2.9.8 2.9 2.3 0 .6-.6 1.1-1.5 1.1-.7 0-1.3-.3-1.5-.9M12 8.4v.9M12 13.7v.9"/></svg>05 — Rewards</p>
-            <h2>Rewards</h2>
+            <h2><img class="x-fmny" src="token/fmny-logo.svg" alt="FMNY" width="36" height="36" />Rewards</h2>
             <p>FMNY is the reward token for using the platform. When an undisputed deal is released, buyer and seller share a rebate worth up to 25% of the fee at the pre-sale price, from a limited pool. Rewards can change or end.</p>
             <ul class="x-list">
               <li>Weekly unlock: what you earn this week becomes claimable when the week ends.</li>
@@ -984,7 +1090,7 @@
             </table>
           </div>
           <div class="x-card" id="pool">
-            <h3>Testnet FMNY/ETH pool (Uniswap v3)</h3>
+            <h3><img class="x-fmny" src="token/fmny-logo.svg" alt="" width="20" height="20" />Testnet FMNY/ETH pool (Uniswap v3)</h3>
             <p><strong>Test tokens only, no real value.</strong> Liquidity is live on testnet: a Uniswap v3 pool on Base Sepolia (0.3% fee) holds 100,000 test FMNY in a sell-only range from about 0.00001 to 0.0001 test ETH per FMNY. You can swap test ETH for test FMNY; there is no ETH in the pool yet, so swapping FMNY back to ETH won't work. Test tokens can't be bought with real money or moved to mainnet, and nothing here is a market price, an offer or a promise of any return or listing.</p>
             <div class="x-row" style="margin-top:12px">
               <a class="x-btn" href="https://app.uniswap.org/swap?chain=base_sepolia&amp;inputCurrency=ETH&amp;outputCurrency=0x6ea28bc7e57b4032fa673bacf6d794d8c68dca75" target="_blank" rel="noopener">Swap test ETH on Uniswap</a>
@@ -1002,6 +1108,30 @@
             <a class="x-btn" href="https://x.com/poshescrow" target="_blank" rel="noopener" aria-label="Follow POSH on X (@poshescrow), opens in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h4.5L20 20h-4.5z"/><path d="M19.5 4l-6.3 7.2M10.8 12.8L4.5 20"/></svg>X @poshescrow</a>
             <a class="x-btn" href="https://discord.gg/7DbFqrymk" target="_blank" rel="noopener" aria-label="Join the POSH Discord, opens in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><circle cx="9" cy="10.5" r=".6"/><circle cx="15" cy="10.5" r=".6"/></svg>Discord</a>
             <a class="x-btn" href="https://www.tiktok.com/@poshescrow" target="_blank" rel="noopener" aria-label="POSH on TikTok, opens in a new tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg>TikTok</a>
+            <a class="x-btn x-btn--ghost" href="#stack">Built on &amp; works with</a>
+          </div>
+        </section>
+        <section class="x-panel x-tk x-stack" id="stack" aria-labelledby="stTitle">
+          <div class="x-head">
+            <p class="x-eye">Built on &amp; works with</p>
+            <h2 id="stTitle">The open infrastructure under POSH.</h2>
+          </div>
+          <ul class="x-wmks">
+            <li><a href="https://base.org" target="_blank" rel="noopener" aria-label="Base, opens in a new tab"><span class="x-wk x-wk--base"><i aria-hidden="true"></i>base</span><small>Network</small></a></li>
+            <li><a href="https://app.uniswap.org" target="_blank" rel="noopener" aria-label="Uniswap, opens in a new tab"><span class="x-wk x-wk--uni">Uniswap</span><small>Exchange</small></a></li>
+            <li><a href="https://metamask.io" target="_blank" rel="noopener" aria-label="MetaMask, opens in a new tab"><span class="x-wk x-wk--mm">MetaMask</span><small>Wallet</small></a></li>
+            <li><a href="https://www.coinbase.com/wallet" target="_blank" rel="noopener" aria-label="Coinbase Wallet, opens in a new tab"><span class="x-wk x-wk--cb"><i aria-hidden="true"></i><span>Coinbase <em>Wallet</em></span></span><small>Wallet</small></a></li>
+            <li><a href="https://www.moonpay.com" target="_blank" rel="noopener" aria-label="MoonPay, opens in a new tab"><span class="x-wk x-wk--mp"><i aria-hidden="true"></i>MoonPay</span><small>On-ramp</small></a></li>
+            <li><a href="https://sepolia.basescan.org" target="_blank" rel="noopener" aria-label="Basescan, opens in a new tab"><span class="x-wk x-wk--bs"><i aria-hidden="true"></i>basescan</span><small>Explorer</small></a></li>
+            <li><a href="https://sourcify.dev" target="_blank" rel="noopener" aria-label="Sourcify, opens in a new tab"><span class="x-wk x-wk--sf"><b aria-hidden="true">{</b>sourcify<b aria-hidden="true">}</b></span><small>Verification</small></a></li>
+            <li><a href="https://www.cloudflare.com" target="_blank" rel="noopener" aria-label="Cloudflare, opens in a new tab"><span class="x-wk x-wk--cf">Cloudflare</span><small>Hosting</small></a></li>
+          </ul>
+          <p class="x-small">Independent project. Listed tools are infrastructure we build on, not partners or endorsers.</p>
+          <div class="x-find">
+            <span class="x-eye">Find us</span>
+            <a href="https://x.com/poshescrow" target="_blank" rel="noopener">X</a>
+            <a href="https://www.tiktok.com/@poshescrow" target="_blank" rel="noopener">TikTok</a>
+            <a href="https://discord.gg/7DbFqrymk" target="_blank" rel="noopener">Discord</a>
           </div>
         </section>
       </main>
@@ -1009,7 +1139,7 @@
       <footer class="x-foot x-fdark x-tk">
         <svg class="x-wmk" viewBox="0 0 300 240" aria-hidden="true"><path d="M40 60L110 30L180 70L250 40M110 30L90 120L40 60M180 70L160 140L230 120L250 40M90 120L160 140L140 210L60 190L90 120M180 70L230 120L260 190L140 210"/><circle cx="40" cy="60" r="6"/><circle cx="110" cy="30" r="8"/><circle cx="180" cy="70" r="6"/><circle cx="250" cy="40" r="5"/><circle cx="90" cy="120" r="7"/><circle cx="160" cy="140" r="14"/><circle cx="230" cy="120" r="8"/><circle cx="60" cy="190" r="5"/><circle cx="140" cy="210" r="6"/><circle cx="260" cy="190" r="6"/></svg>
         <div>
-          <div class="x-mark"><i aria-hidden="true"></i><span>POSH<span class="x-sub">Escrow Platform</span></span></div>
+          <div class="x-mark"><img class="x-logo" src="posh-logo-400.png" alt="" width="40" height="40" /><span>POSH<span class="x-sub">Escrow Platform</span></span></div>
           <p class="x-ftag">Built for trust, between strangers.</p>
           <nav class="x-fnav" aria-label="Footer">
             <button type="button" data-go="deals">Deals</button>
@@ -1030,10 +1160,16 @@
           </div>
         </div>
         <div>
-          <form class="x-join" data-join novalidate>
-            <h3>Get launch updates</h3>
-            <div class="x-uline"><input class="x-in" id="jMail2" type="email" autocomplete="email" placeholder="you@example.com" aria-label="Email" aria-describedby="jMail2-e" /><button class="x-btn x-btn--gold" type="submit">Submit</button></div>
+          <form class="x-join x-fx x-glass" data-join novalidate>
+            <div class="x-fxh">
+              <p class="x-fxh__l">Join the network</p>
+              <h3>Get early access to POSH</h3>
+              <p>Updates, testnet drops and Round One news. Email only if you opt in.</p>
+            </div>
+            <label class="x-f" for="jMail2">Email</label>
+            <div class="x-uline"><input class="x-in" id="jMail2" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="jMail2-e" /><button class="x-btn x-btn--gold" type="submit">Submit</button></div>
             <p class="x-err" id="jMail2-e" hidden></p>
+            <div class="x-done" role="status" hidden><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg><div><p class="x-done__t">You're on the list</p><p class="x-done__s">Watch your inbox for testnet drops and Round One news.</p></div></div>
             <label class="x-f" for="jPledge2">Round One interest (optional, non-binding)</label>
             <select class="x-in" id="jPledge2" data-pledge><option value="">Prefer not to say</option><option>Just watching</option><option>Under 0.1 ETH</option><option>0.1 to 0.5 ETH</option><option>0.5 to 1 ETH</option><option>1 to 5 ETH</option><option>5+ ETH</option></select>
             <p class="x-small">Solicitation of interest only. POSH is considering an offering that may be exempt from registration under the U.S. Securities Act of 1933, but has not determined a specific exemption it intends to rely on. No money or other consideration is being solicited, and if sent in response, will not be accepted. No offer to buy can be accepted and no part of any purchase price can be received until the exemption is determined and, where applicable, its filing, disclosure, or qualification requirements are met. An indication of interest involves no obligation or commitment of any kind. Nothing here is an offer to sell or financial advice, and any offering opens only after the security audit and legal review.</p>
@@ -1071,6 +1207,7 @@
       <div class="x-pa-panel" id="paPanel" role="dialog" aria-labelledby="paTitle" hidden>
         <div class="x-pa-head">
           <span data-pm id="paHeadMol"></span>
+          <img class="x-logo" src="posh-logo-400.png" alt="" width="26" height="26" />
           <h2 id="paTitle">POSH Assistant</h2><span class="x-demo">Beta</span>
           <button type="button" class="x-pa-x" id="paClose" aria-label="Close POSH Assistant">×</button>
         </div>
@@ -1163,8 +1300,9 @@
 
     <dialog class="x-modal x-pmodal x-split" id="prof" aria-labelledby="pTitle">
       <figure class="x-split__img"><img src="signup-hand.jpg" alt="A hand in a knit sleeve holding a phone" /></figure>
-      <div class="x-split__body x-tk">
-      <div class="x-split__top"><span class="x-wm">POSH</span><button type="button" class="x-x" id="pClose" aria-label="Close profile">Close</button></div>
+      <div class="x-split__body x-tk x-fx x-glass">
+      <svg class="x-fxmol" viewBox="0 0 300 240" aria-hidden="true"><path d="M40 60L110 30L180 70L250 40M110 30L90 120L40 60M180 70L160 140L230 120L250 40M90 120L160 140L140 210L60 190L90 120M180 70L230 120L260 190L140 210"/><circle cx="40" cy="60" r="6"/><circle cx="110" cy="30" r="8"/><circle cx="180" cy="70" r="6"/><circle cx="250" cy="40" r="5"/><circle cx="90" cy="120" r="7"/><circle cx="160" cy="140" r="14"/><circle cx="230" cy="120" r="8"/><circle cx="60" cy="190" r="5"/><circle cx="140" cy="210" r="6"/><circle cx="260" cy="190" r="6"/></svg>
+      <div class="x-split__top"><span class="x-wm"><img class="x-logo" src="posh-logo-400.png" alt="" width="28" height="28" />POSH</span><button type="button" class="x-x" id="pClose" aria-label="Close profile">Close</button></div>
       <h3 id="pTitle">Create your POSH profile</h3>
       <ol class="x-phase" id="pSteps" aria-label="Sign-up steps"><li>Wallet</li><li>Details</li><li>Sign in</li><li>Save</li></ol>
       <div data-p="1">
@@ -1215,13 +1353,23 @@
     </dialog>
 
     <dialog class="x-modal x-split" id="join" aria-labelledby="jTitle">
-      <div class="x-split__img x-split__type x-tk" aria-hidden="true"><b>POSH</b><span>Trade anything. Prove everything.</span></div>
-      <div class="x-split__body x-tk">
-        <div class="x-split__top"><span class="x-wm">POSH</span><button type="button" class="x-x" id="jClose" aria-label="Close launch updates">Close</button></div>
+      <div class="x-split__img x-split__type x-tk" aria-hidden="true">
+        <svg class="x-fxmol" viewBox="0 0 300 240"><path d="M40 60L110 30L180 70L250 40M110 30L90 120L40 60M180 70L160 140L230 120L250 40M90 120L160 140L140 210L60 190L90 120M180 70L230 120L260 190L140 210"/><circle cx="40" cy="60" r="6"/><circle cx="110" cy="30" r="8"/><circle cx="180" cy="70" r="6"/><circle cx="250" cy="40" r="5"/><circle cx="90" cy="120" r="7"/><circle cx="160" cy="140" r="14"/><circle cx="230" cy="120" r="8"/><circle cx="60" cy="190" r="5"/><circle cx="140" cy="210" r="6"/><circle cx="260" cy="190" r="6"/></svg>
+        <img class="x-logo" src="posh-logo-400.png" alt="" width="88" height="88" />
+        <div><b>POSH</b><span>Trade anything. Prove everything.</span></div>
+      </div>
+      <div class="x-split__body x-tk x-fx x-glass">
+        <div class="x-split__top"><span class="x-wm"><img class="x-logo" src="posh-logo-400.png" alt="" width="28" height="28" />POSH</span><button type="button" class="x-x" id="jClose" aria-label="Close launch updates">Close</button></div>
         <form class="x-join" data-join novalidate>
-          <h3 id="jTitle">Get launch updates</h3>
-          <div class="x-uline"><input class="x-in" id="jMail1" type="email" autocomplete="email" placeholder="you@example.com" aria-label="Email" aria-describedby="jMail1-e" /><button class="x-btn x-btn--gold" type="submit">Submit</button></div>
+          <div class="x-fxh">
+            <p class="x-fxh__l">Join the network</p>
+            <h3 id="jTitle">Get early access to POSH</h3>
+            <p>Updates, testnet drops and Round One news. Email only if you opt in.</p>
+          </div>
+          <label class="x-f" for="jMail1">Email</label>
+          <div class="x-uline"><input class="x-in" id="jMail1" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="jMail1-e" /><button class="x-btn x-btn--gold" type="submit">Submit</button></div>
           <p class="x-err" id="jMail1-e" hidden></p>
+          <div class="x-done" role="status" hidden><svg viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg><div><p class="x-done__t">You're on the list</p><p class="x-done__s">Watch your inbox for testnet drops and Round One news.</p></div></div>
           <label class="x-f" for="jPledge1">Round One interest (optional, non-binding)</label>
             <select class="x-in" id="jPledge1" data-pledge><option value="">Prefer not to say</option><option>Just watching</option><option>Under 0.1 ETH</option><option>0.1 to 0.5 ETH</option><option>0.5 to 1 ETH</option><option>1 to 5 ETH</option><option>5+ ETH</option></select>
             <p class="x-small">Solicitation of interest only. POSH is considering an offering that may be exempt from registration under the U.S. Securities Act of 1933, but has not determined a specific exemption it intends to rely on. No money or other consideration is being solicited, and if sent in response, will not be accepted. No offer to buy can be accepted and no part of any purchase price can be received until the exemption is determined and, where applicable, its filing, disclosure, or qualification requirements are met. An indication of interest involves no obligation or commitment of any kind. Nothing here is an offer to sell or financial advice, and any offering opens only after the security audit and legal review.</p>
@@ -1261,7 +1409,7 @@
          Any empty address keeps that feature in Demo mode. ===== */
       const CONFIG = { chainId: 84532, escrowAddress: "0x5600c38d7f00dd06719ecd7a4d5b5cd9f40f340d", vaultAddress: "0xeac142c2836ea70cdfb8237b20d7e58291a869b5", passportAddress: "0x80412d3d359892fd383419848ea8dc24d76d60db", tokenAddress: "0x6ea28bc7e57b4032fa673bacf6d794d8c68dca75", rewardsAddress: "0x3784091fc0063a567f11c90dfcbe4f1e1f6cff67", saleAddress: "0xbf5a6455204ee6b69e263bb55c93b64fee4f48ae", profilesAddress: "0x94991a934164013dab8e3fe1b92676267b86a114",
         usdcAddress: "0x036CbD53842c5426634e7929541eC2318f3dCF7e", treasuryAddress: "0xaDF3F583C3E093A133EEcfF977573C3e4AA9851d", distributorAddress: "0xc88bd7742d0edac28488a7952d4169e3e719ef57", teamVestingAddress: "0x62303500ab0610a9798b094532c7242de5ba8776", teamVesting2Address: "0x3587c6b104f417c51c3d989c1b4dd9aa2efc31c1", advisorVestingAddress: "0x84b2e5c1b596ddef146fefb2ebf5de907186b4f3",
-        moonpayApiKey: "", moonpaySignatureUrl: "", signupWebhookUrl: "", assistantEndpoint: "https://posh-assistant.statxqo.workers.dev/",
+        moonpayApiKey: "", moonpaySignatureUrl: "", signupWebhookUrl: "https://posh-signups.statxqo.workers.dev/", assistantEndpoint: "https://posh-assistant.statxqo.workers.dev/",
         // Base Builder Code (ERC-8021). Paste your code from dashboard.base.org (e.g. "bc_b7k3p9da") or its full "Encoded String" hex. Placeholder or empty = no suffix.
         builderCode: "YOUR-BUILDER-CODE" };
       try { Object.assign(CONFIG, JSON.parse(localStorage.getItem("posh.config")) || {}); } catch {}
@@ -1944,7 +2092,7 @@
         e.preventDefault(); const i = f.querySelector("input[type=email]"), c = f.querySelector("[data-optfor]"), m = i.value.trim();
         if (!fe(i.id, /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m) ? (c.checked ? "" : "Tick the box to get email updates") : "Enter a valid email")) return i.focus();
         const b = f.querySelector("button"); b.disabled = true;
-        if (await sendSignup({ source: "newsletter", username: P?.username, displayName: P?.displayName, role: P?.role, email: m, optIn: true, pledge: f.querySelector("[data-pledge]")?.value || "" })) { f.reset(); optSync(); CONFIG.signupWebhookUrl && toast("You're on the list ✓", "ok"); }
+        if (await sendSignup({ source: "newsletter", username: P?.username, displayName: P?.displayName, role: P?.role, email: m, optIn: true, pledge: f.querySelector("[data-pledge]")?.value || "" })) { f.reset(); optSync(); f.classList.add("is-done"); const d = f.querySelector(".x-done"); if (d) d.hidden = false; CONFIG.signupWebhookUrl && toast("You're on the list ✓", "ok"); }
         b.disabled = false;
       }));
 
