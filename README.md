@@ -20,6 +20,24 @@ A Racer X project by Team C.L.I.C.K.it. Co-founders: Stan Redick and Andrea Holm
 - **Rewards**: fee-bounded, capped FMNY rewards with streaks and levels.
 - **Pre-sale (testnet)**: FMNYSale with soft/hard caps and a 90-day lock.
 
+
+## FMNY token (testnet)
+
+<img src="assets/fmny-logo-256.png" width="72" alt="FMNY logo">
+
+| Field | Value |
+|---|---|
+| Name | FMoney Protocol (testnet) |
+| Symbol | FMNY |
+| Decimals | 18 |
+| Network | Base Sepolia (chain 84532) |
+| Address | `0x6ea28bc7e57b4032fa673bacf6d794d8c68dca75` |
+| Supply | 100,000,000 (fixed) |
+| Token list | https://poshescrow.pages.dev/token/tokenlist.json |
+| Logo | `assets/fmny-logo.svg` |
+
+Test tokens only: no value, not an investment. Contracts are unaudited.
+
 ## Repository layout
 | Folder | Contents |
 |---|---|

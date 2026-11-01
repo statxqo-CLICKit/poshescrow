@@ -1,0 +1,17 @@
+{
+  "name": "POSH Escrow (Base Sepolia testnet)",
+  "timestamp": "2026-10-31T00:00:00Z",
+  "version": { "major": 1, "minor": 0, "patch": 0 },
+  "keywords": ["posh", "fmny", "testnet"],
+  "logoURI": "https://poshescrow.pages.dev/token/fmny-logo-256.png",
+  "tokens": [
+    {
+      "chainId": 84532,
+      "address": "0x6ea28bc7e57b4032fa673bacf6d794d8c68dca75",
+      "name": "FMoney Protocol (testnet)",
+      "symbol": "FMNY",
+      "decimals": 18,
+      "logoURI": "https://poshescrow.pages.dev/token/fmny-logo-256.png"
+    }
+  ]
+}
