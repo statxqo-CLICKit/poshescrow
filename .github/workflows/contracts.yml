@@ -1,0 +1,24 @@
+name: contracts
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: contracts
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+      - name: Install dependencies
+        run: |
+          forge install foundry-rs/forge-std@v1.17.0 --no-git
+          forge install OpenZeppelin/openzeppelin-contracts@v5.1.0 --no-git
+      - name: Build
+        run: forge build --sizes
+      - name: Test
+        run: forge test -vv

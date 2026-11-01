@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Live testnet app
+    url: https://poshescrow.pages.dev
+    about: POSH Escrow on Base Sepolia (testnet only, unaudited)
