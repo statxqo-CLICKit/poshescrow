@@ -10,6 +10,6 @@ workers_dev = true
 binding = "AI"
 
 [vars]
-MODEL = "@cf/meta/llama-3.1-8b-instruct-fp8"
-FALLBACK_MODEL = "@cf/meta/llama-3.2-3b-instruct"
+MODEL = "@cf/google/gemma-4-26b-a4b-it"
+FALLBACK_MODEL = "@cf/meta/llama-4-scout-17b-16e-instruct"
 RATE_LIMIT_PER_MIN = "8"

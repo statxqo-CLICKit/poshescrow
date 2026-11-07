@@ -8,7 +8,7 @@ import { SYSTEM_PROMPT } from "../src/prompt.js";
 const URL_ = "https://posh-assistant.example.workers.dev/";
 function mockEnv(impl) {
   const calls = [];
-  return { calls, env: { RATE_LIMIT_PER_MIN: "8", MODEL: "@cf/meta/llama-3.1-8b-instruct-fp8", FALLBACK_MODEL: "@cf/meta/llama-3.2-3b-instruct",
+  return { calls, env: { RATE_LIMIT_PER_MIN: "8", MODEL: "@cf/google/gemma-4-26b-a4b-it", FALLBACK_MODEL: "@cf/meta/llama-4-scout-17b-16e-instruct",
     AI: { run: async (model, input) => { calls.push({ model, input }); return impl ? impl(model, input) : { response: "Handoff Mode lets you meet, scan a QR code and release payment together." }; } } } };
 }
 const post = (body, { origin = "https://poshescrow.pages.dev", ip = "1.1.1.1", raw } = {}) =>
@@ -27,7 +27,7 @@ test("happy path returns {reply}, sends system prompt, tab, max_tokens", async (
   assert.equal(res.status, 200);
   const j = await res.json();
   assert.match(j.reply, /Handoff Mode/);
-  assert.equal(calls[0].model, "@cf/meta/llama-3.1-8b-instruct-fp8");
+  assert.equal(calls[0].model, "@cf/google/gemma-4-26b-a4b-it");
   assert.equal(calls[0].input.messages[0].role, "system");
   assert.match(calls[0].input.messages[0].content, /handoff mode/);
   assert.equal(calls[0].input.max_tokens, 300);
@@ -100,7 +100,7 @@ test("pre-sale answers always carry the lose-everything warning", async () => {
 
 test("AI errors fall back, then return {reply:null,error}", async () => {
   let n = 0;
-  const { env, calls } = mockEnv((model) => { n++; if (model.includes("3.1")) throw new Error("boom"); return { response: "fallback ok" }; });
+  const { env, calls } = mockEnv((model) => { n++; if (model.includes("gemma-4")) throw new Error("boom"); return { response: "fallback ok" }; });
   const r1 = await worker.fetch(post(ok), env);
   assert.equal((await r1.json()).reply, "fallback ok");
   assert.equal(calls.length, 2);
@@ -115,4 +115,13 @@ test("non-POST methods rejected", async () => {
   const { env } = mockEnv();
   assert.equal((await worker.fetch(new Request(URL_, { method: "PUT" }), env)).status, 405);
   assert.equal((await worker.fetch(new Request(URL_ + "health"), env)).status, 200);
+});
+
+test("gemma-4 primary gets thinking disabled; fallback input unchanged", async () => {
+  const { env, calls } = mockEnv((m) => { if (m.includes("gemma")) throw new Error("down"); return { response: "ok fallback" }; });
+  const res = await worker.fetch(post(ok), env);
+  assert.equal(res.status, 200);
+  assert.deepEqual(calls[0].input.chat_template_kwargs, { enable_thinking: false });
+  assert.equal(calls[1].model, "@cf/meta/llama-4-scout-17b-16e-instruct");
+  assert.equal(calls[1].input.chat_template_kwargs, undefined);
 });

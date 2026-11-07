@@ -97,6 +97,11 @@ export function validate(body) {
   return { messages: kept, tab };
 }
 
+// Reasoning models (Gemma 4) spend the token budget thinking unless told not to.
+export function modelInput(model, input) {
+  return /gemma-4|qwen3|gpt-oss/.test(model) ? { ...input, chat_template_kwargs: { enable_thinking: false } } : input;
+}
+
 function extractText(out) {
   if (!out) return "";
   if (typeof out === "string") return out;
@@ -141,12 +146,12 @@ export default {
     if (!env.AI) return fail("AI binding not configured.", 500, origin);
     const system = SYSTEM_PROMPT + (v.tab ? `\n\nThe user is currently viewing the "${v.tab}" tab.` : "");
     const input = { messages: [{ role: "system", content: system }, ...v.messages], max_tokens: LIMITS.MAX_TOKENS, temperature: 0.3 };
-    const models = [env.MODEL || "@cf/meta/llama-3.1-8b-instruct-fp8", env.FALLBACK_MODEL].filter(Boolean);
+    const models = [env.MODEL || "@cf/google/gemma-4-26b-a4b-it", env.FALLBACK_MODEL].filter(Boolean);
 
     let lastErr = "AI unavailable.";
     for (const model of models) {
       try {
-        const text = extractText(await env.AI.run(model, input));
+        const text = extractText(await env.AI.run(model, modelInput(model, input)));
         if (text.trim()) {
           const userText = v.messages[v.messages.length - 1].content;
           return json({ reply: postProcess(text, userText) }, 200, origin);

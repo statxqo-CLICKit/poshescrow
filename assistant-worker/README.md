@@ -2,7 +2,7 @@
 
 Backend for the POSH Assistant chatbot on the POSH Escrow page. Runs on the **Workers Free plan** using the **Workers AI free daily allocation** (10,000 Neurons/day, resets 00:00 UTC). No paid features, no KV/D1/Durable Objects. On the free plan, going over the daily allocation makes requests fail (the bot returns an error); it never bills.
 
-- Model: `@cf/meta/llama-3.1-8b-instruct-fp8` (fallback `@cf/meta/llama-3.2-3b-instruct`). Set in `wrangler.toml` `[vars]`.
+- Model: `@cf/google/gemma-4-26b-a4b-it` (fallback `@cf/meta/llama-4-scout-17b-16e-instruct`). Set in `wrangler.toml` `[vars]`.
 - Rough capacity: worst case about 22 Neurons per reply (≈1,050 input + 300 output tokens) ≈ **450 replies/day free**; shorter chats go further.
 - Account: `1531fc8f5ef3475c2d4059445ab6ce65` (already in `wrangler.toml`).
 
