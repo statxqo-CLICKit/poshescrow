@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Security · POSH Escrow</title>
+<meta name="description" content="POSH Escrow security: 12 source-verified contracts on Base Sepolia, a 48-hour timelock on admin changes, no owner keys on core vaults, and how to report a vulnerability." />
+<link rel="canonical" href="https://poshescrow.pages.dev/security.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Security · POSH Escrow" />
+<meta property="og:description" content="POSH Escrow security: 12 source-verified contracts on Base Sepolia, a 48-hour timelock on admin changes, no owner keys on core vaults, and how to report a vulnerability." />
+<meta property="og:url" content="https://poshescrow.pages.dev/security.html" />
+<meta property="og:image" content="https://poshescrow.pages.dev/hero-handoff.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@poshescrow" />
+<link rel="icon" href="icons/favicon-32.png" />
+<style>
+  body{margin:0;background:#fff;color:#111;font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+  .lab{font:500 12px/1.4 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#666}
+  h1{font-weight:300;font-size:clamp(30px,6vw,44px);line-height:1.1;margin:8px 0 18px}
+  h2{font-weight:500;font-size:19px;margin:30px 0 8px}
+  .note{background:#F5F5F3;border-radius:18px;padding:18px 20px;margin:20px 0;font-weight:500}
+  a{color:#111}
+  .back{display:inline-block;margin-bottom:24px;font:500 12px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em;background:#ECECEA;border-radius:999px;padding:9px 16px;text-decoration:none}
+  footer{margin-top:40px;color:#666;font-size:14px}
+
+  table{width:100%;border-collapse:collapse;font:13px "IBM Plex Mono",ui-monospace,monospace}
+  th,td{text-align:left;padding:8px 6px;border-bottom:1px solid #E4E4E0;vertical-align:top}
+  .wrap{overflow-x:auto}
+  ol li,ul li{margin:6px 0}
+  .cta{display:inline-block;margin:8px 8px 0 0;background:#111;color:#fff;border-radius:999px;padding:11px 18px;text-decoration:none;font:500 12px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="/">← Back to POSH</a>
+<p class="lab">Security</p>
+<h1>Security at POSH</h1>
+<div class="note" role="note">POSH runs on the Base Sepolia testnet only. The contracts are <strong>unaudited</strong>: self-reviewed with 137/137 tests passing and static analysis (tag v0.2-audit-ready). A professional audit comes before any mainnet launch. Test tokens have no real value.</div>
+
+<h2>Verified contracts (12)</h2>
+<p>All 12 contracts are deployed on Base Sepolia (chain 84532) with source code verified on Basescan. Open any address to read the code.</p>
+<div class="wrap"><table>
+<thead><tr><th>Contract</th><th>Role</th><th>Address</th><th>Control</th></tr></thead>
+<tbody>
+<tr><td>PoshEscrow</td><td>Protected deals + Handoff Mode</td><td><a href="https://sepolia.basescan.org/address/0x5600c38d7f00dd06719ecd7a4d5b5cd9f40f340d#code" rel="noopener">0x5600…340d</a></td><td>TimelockController (48h)</td></tr>
+<tr><td>ProofVault</td><td>Commit-reveal item fingerprints</td><td><a href="https://sepolia.basescan.org/address/0xeac142c2836ea70cdfb8237b20d7e58291a869b5#code" rel="noopener">0xeac1…69b5</a></td><td>None (no owner)</td></tr>
+<tr><td>TrustPassport</td><td>On-chain deal reputation</td><td><a href="https://sepolia.basescan.org/address/0x80412d3d359892fd383419848ea8dc24d76d60db#code" rel="noopener">0x8041…60db</a></td><td>None (no owner)</td></tr>
+<tr><td>PoshProfiles</td><td>Optional usernames</td><td><a href="https://sepolia.basescan.org/address/0x94991a934164013dab8e3fe1b92676267b86a114#code" rel="noopener">0x9499…a114</a></td><td>—</td></tr>
+<tr><td>FMNY (test token)</td><td>Reward token, fixed 100M supply</td><td><a href="https://sepolia.basescan.org/address/0x6ea28bc7e57b4032fa673bacf6d794d8c68dca75#code" rel="noopener">0x6ea2…ca75</a></td><td>No mint function</td></tr>
+<tr><td>FMNYRewards</td><td>Fee-bounded deal rewards</td><td><a href="https://sepolia.basescan.org/address/0x3784091fc0063a567f11c90dfcbe4f1e1f6cff67#code" rel="noopener">0x3784…ff67</a></td><td>TimelockController (48h)</td></tr>
+<tr><td>FMNYSale</td><td>Round One testnet sale (testing only)</td><td><a href="https://sepolia.basescan.org/address/0xbf5a6455204ee6b69e263bb55c93b64fee4f48ae#code" rel="noopener">0xbf5a…48ae</a></td><td>TimelockController (48h)</td></tr>
+<tr><td>FMNYDistributor</td><td>One-time token allocation</td><td><a href="https://sepolia.basescan.org/address/0xc88bd7742d0edac28488a7952d4169e3e719ef57#code" rel="noopener">0xc88b…ef57</a></td><td>None (no owner)</td></tr>
+<tr><td>TimelockController</td><td>Owner of escrow, rewards, sale</td><td><a href="https://sepolia.basescan.org/address/0xdd172a2f322b20281cbf6d50869e5ae6292280d8#code" rel="noopener">0xdd17…80d8</a></td><td>48-hour minimum delay</td></tr>
+<tr><td>Team vesting 1</td><td>12-mo cliff, 24-mo linear</td><td><a href="https://sepolia.basescan.org/address/0x62303500ab0610a9798b094532c7242de5ba8776#code" rel="noopener">0x6230…8776</a></td><td>Fixed schedule</td></tr>
+<tr><td>Team vesting 2</td><td>12-mo cliff, 24-mo linear</td><td><a href="https://sepolia.basescan.org/address/0x3587c6b104f417c51c3d989c1b4dd9aa2efc31c1#code" rel="noopener">0x3587…31c1</a></td><td>Fixed schedule</td></tr>
+<tr><td>Advisor vesting</td><td>12-mo cliff, 24-mo linear</td><td><a href="https://sepolia.basescan.org/address/0x84b2e5c1b596ddef146fefb2ebf5de907186b4f3#code" rel="noopener">0x84b2…b4f3</a></td><td>Fixed schedule</td></tr>
+</tbody></table></div>
+
+<h2>48-hour timelock</h2>
+<p>PoshEscrow, FMNYRewards and FMNYSale are owned by a <a href="https://sepolia.basescan.org/address/0xdd172a2f322b20281cbf6d50869e5ae6292280d8" rel="noopener">TimelockController</a>. Any admin change has to be scheduled in public and wait at least 48 hours before it can run, so users can see it coming. The deployer key holds no roles, and the distributor, passport and proof vault have no owner at all.</p>
+
+<h2>How funds are protected</h2>
+<ul>
+<li>Escrowed funds can only go to the seller on release, back to the buyer on refund, or as an arbiter rules in a dispute.</li>
+<li>If an arbiter stays silent for 30 days, the pre-dispute outcome applies, so funds can't be stuck.</li>
+<li>The app asks for exact approval amounts, never unlimited, and shows a plain-English review before your wallet opens. You can check and revoke the escrow's token approval on the Safety tab.</li>
+<li>Only a hash of the deal terms goes on-chain. Email and personal details never do.</li>
+</ul>
+
+<h2>Code and infrastructure</h2>
+<ul>
+<li>Open source: <a href="https://github.com/statxqo-CLICKit/poshescrow" rel="noopener">github.com/statxqo-CLICKit/poshescrow</a>, with secret scanning, push protection and Dependabot alerts on.</li>
+<li>Served over HTTPS by Cloudflare with security headers (no framing, no MIME sniffing, strict referrer policy).</li>
+<li>Machine-readable contact: <a href="/.well-known/security.txt">/.well-known/security.txt</a></li>
+</ul>
+
+<h2 id="report">Report a vulnerability</h2>
+<p>Email <a href="mailto:statxqo@gmail.com?subject=POSH%20security%20report">statxqo@gmail.com</a> with "POSH security report" in the subject. Please include the contract or page, steps to reproduce and impact, and give us a reasonable time to fix it before you share it publicly. We never ask for seed phrases, private keys or payments, and nobody from POSH will DM you first.</p>
+<footer>POSH Escrow · Base Sepolia testnet only · unaudited · test tokens have no real value · not financial advice · not an offer to sell tokens. <a href="/how-escrow-works.html">How escrow works</a> · <a href="/security.html">Security</a> · <a href="/terms.html">Terms</a> · <a href="https://x.com/poshescrow">X</a> · <a href="https://www.tiktok.com/@poshescrow">TikTok</a> · <a href="https://discord.gg/7DbFqrymk">Discord</a></footer>
+</main>
+</body>
+</html>

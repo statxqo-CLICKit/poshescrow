@@ -3,7 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>POSH · Escrow Platform</title>
+    <title>POSH Escrow · Peer-to-peer crypto escrow on Base (testnet)</title>
+    <meta name="description" content="POSH Escrow: peer-to-peer crypto escrow on Base. Fund a deal, the seller delivers, you release. Handoff Mode for in-person meetups. Base Sepolia testnet, unaudited." />
+    <link rel="canonical" href="https://poshescrow.pages.dev/" />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0B0F1A" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="POSH Escrow" />
+    <meta property="og:title" content="POSH Escrow · Crypto escrow that protects buyers and sellers" />
+    <meta property="og:description" content="POSH Escrow: peer-to-peer crypto escrow on Base. Fund a deal, the seller delivers, you release. Handoff Mode for in-person meetups. Base Sepolia testnet, unaudited." />
+    <meta property="og:url" content="https://poshescrow.pages.dev/" />
+    <meta property="og:image" content="https://poshescrow.pages.dev/hero-handoff.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@poshescrow" />
+    <meta name="twitter:title" content="POSH Escrow · Crypto escrow that protects buyers and sellers" />
+    <meta name="twitter:description" content="POSH Escrow: peer-to-peer crypto escrow on Base. Fund a deal, the seller delivers, you release. Handoff Mode for in-person meetups. Base Sepolia testnet, unaudited." />
+    <meta name="twitter:image" content="https://poshescrow.pages.dev/hero-handoff.jpg" />
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "POSH Escrow", "url": "https://poshescrow.pages.dev/", "logo": "https://poshescrow.pages.dev/posh-logo-400.png", "founder": [{"@type": "Person", "name": "Stan Redick"}, {"@type": "Person", "name": "Andrea Holmes"}], "sameAs": ["https://x.com/poshescrow", "https://www.tiktok.com/@poshescrow", "https://github.com/statxqo-CLICKit/poshescrow"]}, {"@type": "WebApplication", "name": "POSH Escrow", "url": "https://poshescrow.pages.dev/", "applicationCategory": "FinanceApplication", "operatingSystem": "Web, Android", "description": "POSH Escrow: peer-to-peer crypto escrow on Base. Fund a deal, the seller delivers, you release. Handoff Mode for in-person meetups. Base Sepolia testnet, unaudited.", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "WebSite", "name": "POSH Escrow", "url": "https://poshescrow.pages.dev/"}]}</script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,7 +39,7 @@
       .page{max-width:none;padding:0;display:block;overflow-x:clip}
       :focus-visible{outline:2px solid var(--x-ink);outline-offset:3px}
       /* mono eyebrow voice: buttons, labels, tabs, chips, numbers */
-      .x-eye,.x-btn,.x-tab,.x-seg button,.x-tiles button,.x-sheet button,label.x-f,p.x-f,.x-lbl,.x-grp h4,.x-demo,.x-pill,.x-hchip,.x-stats dt,.x-clock span,.x-phase li,.x-levels,.x-badge,.x-x,.x-bnav button,.x-menu>*,.x-tick-track li,.x-fnav button,.x-ok,.x-sheet h3,.x-join h3,.x-wm,.x-swipe>span{font:400 12px/1.5 var(--x-mono);letter-spacing:.08em;text-transform:uppercase}
+      .x-eye,.x-btn,.x-tab,.x-seg button,.x-tiles button,.x-sheet button,label.x-f,p.x-f,.x-lbl,.x-grp h4,.x-demo,.x-pill,.x-hchip,.x-stats dt,.x-clock span,.x-phase li,.x-levels,.x-badge,.x-x,.x-bnav button,.x-menu>*,.x-tick-track li,.x-fnav button,.x-fnav a,.x-ok,.x-sheet h3,.x-join h3,.x-wm,.x-swipe>span{font:400 12px/1.5 var(--x-mono);letter-spacing:.08em;text-transform:uppercase}
       .x-mono,.x-in.x-mono{font-family:var(--x-mono)}
       .x-small,.x-warn,.x-msg,.x-disc,.x-toast,.x-linkbtn{font:400 12px/1.6 var(--x-mono);letter-spacing:.02em}
       .x-eye{color:var(--x-mute);margin:0}
@@ -286,6 +303,7 @@
       .x-fnav{display:flex;flex-direction:column;align-items:flex-start}
       .x-fnav button{min-height:var(--tap);padding:0;border:0;background:none;color:var(--x-mute);cursor:pointer;text-underline-offset:4px}
       .x-fnav button:hover{color:var(--x-ink);text-decoration:underline}
+      .x-fnav a{display:inline-flex;align-items:center;min-height:var(--tap);color:var(--x-mute);text-decoration:none;text-underline-offset:4px}.x-fnav a:hover{color:var(--x-ink);text-decoration:underline}
       .x-foot .x-join h3{color:var(--x-mute);margin:0 0 4px}
       .x-foot .x-small{margin-top:16px}
       .x-foot a,.x-split a{text-underline-offset:3px}
@@ -583,7 +601,7 @@
     <script>if("serviceWorker" in navigator){addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));}</script>
   </head>
   <body>
-    <div class="x-phase-bar" role="status"><b>Test &amp; audit phase</b> · Base Sepolia testnet only · no real funds · professional audit and legal review before any mainnet launch</div>
+    <div class="x-phase-bar" role="status"><b>Test &amp; audit phase</b> · Base Sepolia testnet only · no real value · unaudited · not financial advice, use at your own risk · <a href="/terms.html" style="color:inherit;text-decoration:underline">Terms</a></div>
     <div class="page" id="top">
       <div class="x-top">
         <div class="x-bar">
@@ -1147,6 +1165,10 @@
             <button type="button" data-go="vault">Vault</button>
             <button type="button" data-go="presale">Pre-sale*</button>
             <button type="button" data-legal aria-haspopup="dialog">Legal &amp; Risk</button>
+            <a href="/how-escrow-works.html">How escrow works</a>
+            <a href="/security.html">Security</a>
+            <a href="/terms.html">Terms</a>
+            <a href="/terms.html#privacy">Privacy</a>
             <button type="button" id="cfgFoot">Paste CONFIG</button>
           </nav>
           <div class="x-social">
@@ -1281,6 +1303,7 @@
       <p>You must be 18 or older. Not available to sanctioned persons or in sanctioned jurisdictions. KYC may be required.</p>
       <h4>Privacy</h4>
       <p>Your email is kept off-chain. Marketing email is sent only if you opt in.</p>
+      <p><a href="/terms.html">Read the full Testnet Terms of Use</a></p>
       <h4>AI Assistant</h4>
       <p>POSH Assistant can make mistakes. Its answers are not advice.</p>
       <h4>Forward-looking statements</h4>

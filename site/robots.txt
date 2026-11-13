@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /work/
+
+Sitemap: https://poshescrow.pages.dev/sitemap.xml

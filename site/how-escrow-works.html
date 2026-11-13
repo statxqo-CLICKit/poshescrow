@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How crypto escrow protects buyers · POSH Escrow</title>
+<meta name="description" content="How POSH Escrow protects buyers and sellers in peer-to-peer deals, plus a 5-minute testnet demo walkthrough. Base Sepolia testnet, unaudited." />
+<link rel="canonical" href="https://poshescrow.pages.dev/how-escrow-works.html" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How crypto escrow protects buyers · POSH Escrow" />
+<meta property="og:description" content="How POSH Escrow protects buyers and sellers in peer-to-peer deals, plus a 5-minute testnet demo walkthrough. Base Sepolia testnet, unaudited." />
+<meta property="og:url" content="https://poshescrow.pages.dev/how-escrow-works.html" />
+<meta property="og:image" content="https://poshescrow.pages.dev/hero-handoff.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@poshescrow" />
+<link rel="icon" href="icons/favicon-32.png" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How does crypto escrow protect a buyer?","acceptedAnswer":{"@type":"Answer","text":"The buyer's payment is locked in a smart contract, not sent to the seller. The seller is paid only when the buyer releases it. If the seller doesn't deliver by the deadline, the buyer can take a refund, and disputes go to an arbiter."}},
+{"@type":"Question","name":"What is Handoff Mode?","acceptedAnswer":{"@type":"Answer","text":"Handoff Mode is escrow for in-person meetups: the buyer funds before meeting, scans the seller's Handoff QR to check the item's Proof Vault fingerprint, and releases with one tap."}},
+{"@type":"Question","name":"Is POSH Escrow live with real money?","acceptedAnswer":{"@type":"Answer","text":"No. POSH runs on the Base Sepolia testnet only, its contracts are unaudited, and test tokens have no real value."}}]}</script>
+<style>
+  body{margin:0;background:#fff;color:#111;font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+  .lab{font:500 12px/1.4 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;color:#666}
+  h1{font-weight:300;font-size:clamp(30px,6vw,44px);line-height:1.1;margin:8px 0 18px}
+  h2{font-weight:500;font-size:19px;margin:30px 0 8px}
+  .note{background:#F5F5F3;border-radius:18px;padding:18px 20px;margin:20px 0;font-weight:500}
+  a{color:#111}
+  .back{display:inline-block;margin-bottom:24px;font:500 12px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em;background:#ECECEA;border-radius:999px;padding:9px 16px;text-decoration:none}
+  footer{margin-top:40px;color:#666;font-size:14px}
+
+  table{width:100%;border-collapse:collapse;font:13px "IBM Plex Mono",ui-monospace,monospace}
+  th,td{text-align:left;padding:8px 6px;border-bottom:1px solid #E4E4E0;vertical-align:top}
+  .wrap{overflow-x:auto}
+  ol li,ul li{margin:6px 0}
+  .cta{display:inline-block;margin:8px 8px 0 0;background:#111;color:#fff;border-radius:999px;padding:11px 18px;text-decoration:none;font:500 12px "IBM Plex Mono",monospace;text-transform:uppercase;letter-spacing:.08em}
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="/">← Back to POSH</a>
+<p class="lab">Use case</p>
+<h1>How escrow protects buyers</h1>
+<div class="note" role="note">Testnet demo only. POSH runs on Base Sepolia with free test tokens that have no real value. Contracts are unaudited. Not financial advice and not an offer to sell tokens.</div>
+
+<h2>The problem</h2>
+<p>Buying from a stranger online or on a marketplace means someone has to trust first. Pay first and the seller can vanish. Ship first and the buyer can vanish. Most peer-to-peer scams live in that gap.</p>
+
+<h2>What escrow changes</h2>
+<ul>
+<li><strong>Your money waits in a smart contract,</strong> not in the seller's wallet. Nobody, including POSH, can quietly take it.</li>
+<li><strong>The seller is paid only when you release.</strong> You release once the item is in your hands.</li>
+<li><strong>No delivery by the deadline means a refund.</strong> You set the deadline (2 to 720 hours).</li>
+<li><strong>Disputes go to an arbiter,</strong> the default one or an approved arbiter you pick. If nobody rules within 30 days, the pre-dispute outcome applies, so funds never get stuck.</li>
+<li><strong>The deal terms are fingerprinted on-chain.</strong> Only a hash goes on-chain, so the agreement can't be rewritten later and your details stay private.</li>
+<li><strong>Trust Passport</strong> shows each wallet's on-chain deal history before you trade.</li>
+</ul>
+
+<h2>In-person deals: Handoff Mode</h2>
+<p>Buying a bike, a bag or a console at a meetup? Fund before you meet, verify the item on the spot, and release with one scan.</p>
+<ol>
+<li>Check the seller's Trust Passport.</li>
+<li>Fund the handoff and set a meetup window (2 to 24 hours).</li>
+<li>The seller shows a Handoff QR. You scan it and the app checks the item's Proof Vault fingerprint matches the listing.</li>
+<li>The seller taps Mark handed over. You then have 24 hours to release or dispute.</li>
+<li>Release pays the seller and moves the Proof Vault record to you in one step.</li>
+</ol>
+
+<h2 id="demo">Demo walkthrough (about 5 minutes, free)</h2>
+<ol>
+<li>Install MetaMask or Coinbase Wallet and switch to the <strong>Base Sepolia</strong> test network (the POSH site offers to add it).</li>
+<li>Get free test ETH from the <a href="https://portal.cdp.coinbase.com/products/faucet" rel="noopener">Coinbase CDP faucet</a>. It costs nothing and has no value.</li>
+<li>Open <a href="/">poshescrow.pages.dev</a> and connect your wallet.</li>
+<li>On <strong>Deals</strong>, paste a second wallet of yours as the seller, type the terms (for example "Test: used bike, pickup Saturday"), enter 0.001 test ETH and a deadline, then tap Create deal.</li>
+<li>Review the plain-English summary, then confirm in your wallet. The deal now shows as funded.</li>
+<li>Release the payment to finish the deal, or wait out the deadline and claim a refund to see buyer protection work. Every finished deal gets a shareable Deal Certificate.</li>
+<li>Check the transaction on <a href="https://sepolia.basescan.org/address/0x5600c38d7f00dd06719ecd7a4d5b5cd9f40f340d" rel="noopener">Basescan</a>.</li>
+</ol>
+<p><a class="cta" href="/">Try the testnet demo</a><a class="cta" href="/security.html" style="background:#ECECEA;color:#111">See security</a></p>
+
+<h2>Stay safe</h2>
+<ul>
+<li>Never pay outside escrow, even for a discount.</li>
+<li>Check every address character by character.</li>
+<li>POSH never DMs you and never asks for your seed phrase.</li>
+<li>Release only with the item in your hands. A release can't be undone.</li>
+</ul>
+<footer>POSH Escrow · Base Sepolia testnet only · unaudited · test tokens have no real value · not financial advice · not an offer to sell tokens. <a href="/how-escrow-works.html">How escrow works</a> · <a href="/security.html">Security</a> · <a href="/terms.html">Terms</a> · <a href="https://x.com/poshescrow">X</a> · <a href="https://www.tiktok.com/@poshescrow">TikTok</a> · <a href="https://discord.gg/7DbFqrymk">Discord</a></footer>
+</main>
+</body>
+</html>
